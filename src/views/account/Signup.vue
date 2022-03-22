@@ -52,6 +52,12 @@
 
       <!-- <a class="btn" href="" target="/login"> Signup</a> -->
     </div>
+    <button type="button" class="btn" target="/home" @click="goToHome">
+      Home
+    </button>
+    <button type="button" class="btn" target="/login" @click="logIn">
+      Login
+    </button>
   </form>
 </template>
 
@@ -84,14 +90,20 @@ export default {
           .then((data) => data.json())
           .then((user) => {
             console.log(user);
-            localStorage.setItem("id", user._id);
-            localStorage.setItem("name", user.name);
-            localStorage.setItem("email", user.email);
+            // localStorage.setItem("id", user._id);
+            // localStorage.setItem("name", user.name);
+            // localStorage.setItem("email", user.email);
             this.$router.push({ name: "login" });
           });
       }
     },
     // ...mapActions("account", ["login"]),
+    goToHome() {
+      this.$router.push("/home");
+    },
+    logIn() {
+      this.$router.push("/login");
+    },
   },
 };
 </script>

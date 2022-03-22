@@ -2,26 +2,9 @@
   <form @submit.prevent="Signin({ email, password })">
     <!-- <form @submit.prevent="signup"> -->
     <div class="main">
-      <!-- <div class="user">
-        <label for="name">Username</label>
-        <input
-          type="text"
-          placeholder="Type Your Name In English Only"
-          id="name"
-          required
-          v-model="name"
-        />
-      </div> -->
-
-      <div class="email">
-        <label for="email">E-mail</label>
-        <input
-          type="email"
-          placeholder="Type A Valid Email"
-          id="email"
-          required
-          v-model="email"
-        />
+      <div class="user">
+        <label for="name">Name</label>
+        <input type="text" placeholder="" id="name" required v-model="name" />
       </div>
       <div class="pass">
         <label for="pass">Password</label>
@@ -33,6 +16,18 @@
           v-model="password"
         />
       </div>
+
+      <div class="email">
+        <label for="email">E-mail</label>
+        <input
+          type="email"
+          placeholder="Type A Valid Email"
+          id="email"
+          required
+          v-model="email"
+        />
+      </div>
+
       <!-- <div class="brief">
         <label for="brief">Brief</label>
         <textarea id="brief" v-model="brief"></textarea>
@@ -49,15 +44,27 @@
       </div> -->
       <button type="submit" class="btn btn-primary btn-block">Login</button>
       <br />
-      <!-- <button type="submit" class="btn btn-primary btn-block">Login</button> -->
 
-      <!-- <a class="btn" href="" target="/login"> Signup</a> -->
+      <!-- <button type="submit" class="btn btn-primary btn-block">Login</button> -->
     </div>
+    <button type="button" class="btn" target="/home" @click="goToHome">
+      Home
+    </button>
+    <button type="button" class="btn" target="/signup" @click="signUp">
+      Signup
+    </button>
   </form>
 </template>
 
 <script>
+// import { mapGetters } from "vuex";
 export default {
+  // name: "Base",
+  // computed: {
+  //   ...mapGetters("account", ["user"]),
+  //   ...mapGetters("product", ["cart"]),
+  // },
+
   name: "Signin",
   data() {
     return {
@@ -75,6 +82,7 @@ export default {
             email: this.email,
             password: this.password,
           }),
+
           headers: {
             "Content-type": "application/json; charset=UTF-8",
           },
@@ -82,14 +90,23 @@ export default {
           .then((data) => data.json())
           .then((user) => {
             console.log(user);
-            // localStorage.setItem("id", user._id);
-            // localStorage.setItem("name", user.name);
-            // localStorage.setItem("email", user.email);
-            this.$router.push({ name: "Profile" });
+            if (user.accessToken) {
+              localStorage.setItem("id", user._id);
+              localStorage.setItem("name", user.name);
+              localStorage.setItem("email", user.email);
+              return this.$router.push("/");
+            }
+            alert(user.message);
           });
       }
     },
     // ...mapActions("account", ["login"]),
+    goToHome() {
+      this.$router.push("/home");
+    },
+    signUp() {
+      this.$router.push("/signup");
+    },
   },
 };
 // import { mapActions } from "vuex";
@@ -122,12 +139,6 @@ export default {
     gap: 45px;
   }
 }
-/* .main .user {
-  grid-area: username;
-}
-.main .phone {
-  grid-area: phone;
-} */
 .main .email {
   grid-area: email;
 }

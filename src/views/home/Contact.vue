@@ -117,7 +117,7 @@ export default {
     handleSubmit() {
       console.log(this.name, this.email, this.phone, this.subject);
 
-      fetch("http://localhost:5000/contact", {
+      fetch("https://ecommerce-pr.herokuapp.com/contact", {
         method: "POST",
         body: JSON.stringify({
           name: this.name,
