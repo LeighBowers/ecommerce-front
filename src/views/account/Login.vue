@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="login({ email, password })">
+  <form @submit.prevent="Signin({ email, password })">
     <!-- <form @submit.prevent="signup"> -->
     <div class="main">
       <!-- <div class="user">
@@ -85,7 +85,7 @@ export default {
             // localStorage.setItem("id", user._id);
             // localStorage.setItem("name", user.name);
             // localStorage.setItem("email", user.email);
-            this.$router.push({ name: "login" });
+            this.$router.push({ name: "Profile" });
           });
       }
     },
