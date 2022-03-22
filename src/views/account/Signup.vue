@@ -1,0 +1,188 @@
+<template>
+  <!-- <form @submit.prevent="login({ email, password })"> -->
+  <form @submit.prevent="signup">
+    <div class="main">
+      <div class="user">
+        <label for="name">Username</label>
+        <input
+          type="text"
+          placeholder="Type Your Name In English Only"
+          id="name"
+          required
+          v-model="name"
+        />
+      </div>
+      <div class="pass">
+        <label for="pass">Password</label>
+        <input
+          type="password"
+          placeholder="Type A Complex Password"
+          id="pass"
+          required
+          v-model="password"
+        />
+      </div>
+      <div class="email">
+        <label for="email">E-mail</label>
+        <input
+          type="email"
+          placeholder="Type A Valid Email"
+          id="email"
+          required
+          v-model="email"
+        />
+      </div>
+      <!-- <div class="brief">
+        <label for="brief">Brief</label>
+        <textarea id="brief" v-model="brief"></textarea>
+      </div>
+      <div class="phone">
+        <label for="phone">Phone</label>
+        <input
+          type="number"
+          placeholder="Type Your Phone Number"
+          id="phone"
+          required
+          v-model="phone"
+        />
+      </div> -->
+      <button type="submit" class="btn btn-primary btn-block">Signup</button>
+      <br />
+      <!-- <button type="submit" class="btn btn-primary btn-block">Login</button> -->
+
+      <!-- <a class="btn" href="" target="/login"> Signup</a> -->
+    </div>
+  </form>
+</template>
+
+<script>
+// import { mapActions } from "vuex";
+export default {
+  name: "Signup",
+  data() {
+    return {
+      name: null,
+      email: null,
+      password: null,
+    };
+  },
+  methods: {
+    signup() {
+      if (this.name && this.email && this.password) {
+        console.log("we made it");
+        fetch("https://ecommerce-pr.herokuapp.com/users/signup", {
+          method: "POST",
+          body: JSON.stringify({
+            name: this.name,
+            email: this.email,
+            password: this.password,
+          }),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        })
+          .then((data) => data.json())
+          .then((user) => {
+            console.log(user);
+            localStorage.setItem("id", user._id);
+            localStorage.setItem("name", user.name);
+            localStorage.setItem("email", user.email);
+            this.$router.push({ name: "login" });
+          });
+      }
+    },
+    // ...mapActions("account", ["login"]),
+  },
+};
+</script>
+
+<style scoped>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+.main {
+  padding-bottom: 50px;
+  width: 80%;
+  margin: 0 auto;
+  padding: 100px;
+  display: grid;
+  grid:
+    "username phone"
+    "password brief"
+    "email brief"
+    "btn btn";
+  gap: 35px;
+  background-color: #609b65a6;
+}
+@media (max-width: 767px) {
+  .main {
+    grid: "username" "phone" "password" "brief" "email" "btn";
+    gap: 45px;
+  }
+}
+.main .user {
+  grid-area: username;
+}
+.main .phone {
+  grid-area: phone;
+}
+.main .email {
+  grid-area: email;
+}
+.main .brief {
+  grid-area: brief;
+}
+.main .btn {
+  grid-area: btn;
+}
+.main div label {
+  display: block;
+  margin-bottom: 5px;
+}
+.main div:not(.phone, .brief) label::after {
+  content: " *";
+  color: #f00;
+}
+.main div input {
+  width: 100%;
+  height: 100%;
+  padding: 5px 10px;
+  outline: none;
+  border: none;
+}
+.main div input[type="number"]::-webkit-outer-spin-button,
+.main div input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.main .brief textarea {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  outline: none;
+  border: none;
+  resize: none;
+}
+.main .btn {
+  margin-top: 15px;
+  padding: 15px;
+  text-decoration: none;
+  text-align: center;
+  background-color: #009688;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  -ms-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
+}
+.main .btn:hover {
+  filter: brightness(80%);
+  -webkit-filter: brightness(80%);
+}
+</style>
