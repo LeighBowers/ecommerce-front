@@ -27,14 +27,16 @@
   </div>
 </template>
 <script>
-// import { mapGetters } from "vuex";
-// export default {
-//   name: "Base",
-//   computed: {
-//     ...mapGetters("account", ["user"]),
-//     ...mapGetters("product", ["cart"]),
-//   },
-// };
+import { mapGetters } from "vuex";
+export default {
+  computed: {
+    ...mapGetters("account", ["user"]),
+    ...mapGetters("product", ["cart", "products"]),
+  },
+  mounted() {
+    console.log(this.products);
+  },
+};
 </script>
 <style scoped>
 #perfume-collection {

@@ -2,10 +2,11 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from "../views/account/Login.vue";
 import Home from "../views/home/Home.vue";
+import About from "../views/home/About.vue";
 import Contact from "../views/home/Contact.vue";
-// import About from "../views/home/About.vue";
-import Profile from "../views/home/Profile.vue";
+// import Profile from "../views/home/Profile.vue";
 // import Products from "../views/home/Products.vue";
+// import { Products } from 'view/home/Products.vue';
 
 Vue.use(VueRouter)
 
@@ -16,17 +17,17 @@ const routes = [
     component: Home,
     name: "home"
   },
-  // {
-  //   path: "/about",
-  //   component: About,
-  //   name: "about"
-  // },
-
   {
-    path: "/profile",
-    component: Profile,
-    name: "profile"
+    path: "/about",
+    component: About,
+    name: "about"
   },
+
+  // {
+  //   path: "/profile",
+  //   component: Profile,
+  //   name: "profile"
+  // },
   {
     path: "/contact",
     component: Contact,
@@ -49,8 +50,10 @@ const routes = [
     component: () => import('../layouts/Base.vue'),
     children: [
       { path: '', component: () => import('../views/home/Home.vue') },
-      // { path: '', component: () => import('../views/home/Profile.vue') },
-      { path: '/', component: () => import('../views/home/Products.vue') },
+      { path: '', component: () => import('../views/home/Profile.vue') },
+      {
+        path: '/', component: () => import('../views/home/Products.vue')
+      },
       { path: 'details/:idProduct', component: () => import('../views/home/Details.vue') },
       { path: 'cart', component: () => import('../views/home/Cart.vue') }
     ]

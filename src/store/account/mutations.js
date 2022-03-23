@@ -1,3 +1,3 @@
-export function setUserData(state, val) {
-    state.userData = val
+export function setUserData(state, userData) {
+    state.userData = userData
 }

@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="Signin({ email, password })">
+  <form @submit.prevent="login({ email, password })">
     <!-- <form @submit.prevent="signup"> -->
     <div class="main">
       <div class="user">
@@ -57,22 +57,21 @@
 </template>
 
 <script>
-// import { mapGetters } from "vuex";
+import { mapActions } from "vuex";
 export default {
   // name: "Base",
-  // computed: {
-  //   ...mapGetters("account", ["user"]),
-  //   ...mapGetters("product", ["cart"]),
-  // },
-
+  //
   name: "Signin",
   data() {
     return {
+      name: null,
       email: null,
       password: null,
     };
   },
+
   methods: {
+    ...mapActions("account", ["login"]),
     Signin() {
       if (this.email && this.password) {
         console.log("we made it");
@@ -94,13 +93,15 @@ export default {
               localStorage.setItem("id", user._id);
               localStorage.setItem("name", user.name);
               localStorage.setItem("email", user.email);
-              return this.$router.push("/");
+
+              // return this.$router.push("/products");
             }
+
             alert(user.message);
           });
       }
     },
-    // ...mapActions("account", ["login"]),
+
     goToHome() {
       this.$router.push("/home");
     },

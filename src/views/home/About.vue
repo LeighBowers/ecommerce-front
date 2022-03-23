@@ -1,63 +1,20 @@
 <template>
-   <!--First row-->
-        <div class="row wow fadeIn" data-wow-delay="0.4s">
-          <div class="col-lg-12">
-            <div class="divider-new">
-              <h2 class="h2-responsive">What's new?</h2>
-            </div>
-
-
-            <!--Carousel Wrapper-->
-            <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
-              <!--Indicators-->
-              <ol class="carousel-indicators">
-                <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-1z" data-slide-to="1"></li>
-                <li data-target="#carousel-example-1z" data-slide-to="2"></li>
-              </ol>
-              <!--/.Indicators-->
-              <!--Slides-->
-              <div class="carousel-inner" role="listbox">
-                <!--First slide-->
-                <div class="carousel-item active">
-                  <img src="http://mdbootstrap.com/img//Photos/Slides/img%20(107).jpg" alt="First slide">
-                  <div class="carousel-caption">
-                    <h4>New collection</h4>
-                    <br>
-                  </div>
-                </div>
-                <!--/First slide-->
-                <!--Second slide-->
-                <div class="carousel-item">
-                  <img src="http://mdbootstrap.com/img//Photos/Slides/img%20(109).jpg" alt="Second slide">
-                  <div class="carousel-caption">
-                    <h4>Get discount!</h4>
-                    <br>
-                  </div>
-                </div>
-                <!--/Second slide-->
-                <!--Third slide-->
-                <div class="carousel-item">
-                  <img src="http://mdbootstrap.com/img//Photos/Slides/img%20(36).jpg" alt="Third slide">
-                  <div class="carousel-caption">
-                    <h4>Only now for $10</h4>
-                    <br>
-                  </div>
-                </div>
-                <!--/Third slide-->
-              </div>
-              <!--/.Slides-->
-              <!--Controls-->
-              <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
-              <!--/.Controls-->
-            </div>
+  <div class="about-section">
+    <div class="inner-container">
+      <h1>About Us</h1>
+      <p class="text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus velit
+        ducimus, enim inventore earum, eligendi nostrum pariatur necessitatibus
+        eius dicta a voluptates sit deleniti autem error eos totam nisi neque
+        voluptates sit deleniti autem error eos totam nisi neque.
+      </p>
+      <div class="skills">
+        <span>Web Design</span>
+        <span>Photoshop & Illustrator</span>
+        <span>Coding</span>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -65,30 +22,80 @@ export default {};
 </script>
 
 <style>
-/* TEMPLATE STYLES */
-
-main {
-  padding-top: 3rem;
-  padding-bottom: 2rem;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+  box-sizing: border-box;
 }
 
-.widget-wrapper {
-  padding-bottom: 2rem;
-  border-bottom: 1px solid #e0e0e0;
-  margin-bottom: 2rem;
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f1f1;
 }
 
-.extra-margins {
-  margin-top: 1rem;
-  margin-bottom: 2.5rem;
+.about-section {
+  background: url(https://fadzrinmadu.github.io/hosted-assets/responsive-about-us-section-using-html/pic.jpg)
+    no-repeat left;
+  background-size: 55%;
+  background-color: #fdfdfd;
+  overflow: hidden;
+  padding: 100px 0;
 }
 
-.divider-new {
-  margin-top: 0;
+.inner-container {
+  width: 55%;
+  float: right;
+  background-color: #fdfdfd;
+  padding: 150px;
 }
 
-/* footer.page-footer {
-  background-color: #414a5c;
-  margin-top: 2rem;
-} */
+.inner-container h1 {
+  margin-bottom: 30px;
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.text {
+  font-size: 13px;
+  color: #545454;
+  line-height: 30px;
+  text-align: justify;
+  margin-bottom: 40px;
+}
+
+.skills {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+@media screen and (max-width: 1200px) {
+  .inner-container {
+    padding: 80px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .about-section {
+    background-size: 100%;
+    padding: 100px 40px;
+  }
+  .inner-container {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .about-section {
+    padding: 0;
+  }
+  .inner-container {
+    padding: 60px;
+  }
+}
 </style>

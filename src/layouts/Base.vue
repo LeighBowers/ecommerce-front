@@ -20,6 +20,9 @@
           <router-link v-else class="btn btn-primary my-2 my-sm-0" to="/login"
             >Login</router-link
           >
+          <span v-if="isLoggedIn === true">
+            | <a @click="logout">Logout</a></span
+          >
 
           <router-link class="btn btn-primary my-2 my-sm-0" to="/signup"
             >Signup</router-link
@@ -40,6 +43,11 @@
 import { mapGetters } from "vuex";
 export default {
   name: "Base",
+  data() {
+    return {
+      isLoggedIn: false,
+    };
+  },
   computed: {
     ...mapGetters("account", ["user"]),
     ...mapGetters("product", ["cart"]),
