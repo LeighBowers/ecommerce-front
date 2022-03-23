@@ -1,5 +1,5 @@
-export function setProducts(state, products) {
-    state.products = products
+export function setProducts(state, val) {
+    state.products = val
 }
 
 export function setProduct(state, val) {

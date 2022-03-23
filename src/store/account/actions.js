@@ -1,8 +1,8 @@
 // import router from '../../router'
-import API from '../api/api';
+// import Axios from 'axios';
 
-export async function login(payload) {
-    await fetch(`${API.URL}/users/signin`, {
+export async function login({ commit }, payload) {
+    await fetch('https://ecommerce-pr.herokuapp.com/users/signin', {
         method: 'POST',
         // mode: 'cors',
         body: JSON.stringify({
@@ -11,7 +11,7 @@ export async function login(payload) {
         })
     }).then(data => data.json()).then((user) => {
         console.log(user)
-        // commit("setUserData", user)
+        commit("setUserData", user)
         // window.location = '/'
     });
 
