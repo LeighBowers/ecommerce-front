@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from "../views/account/Login.vue";
+// import Login from "../views/account/Login.vue";
 import Home from "../views/home/Home.vue";
 import About from "../views/home/About.vue";
 import Contact from "../views/home/Contact.vue";
 // import Profile from "../views/home/Profile.vue";
-// import Products from "../views/home/Products.vue";
+import Products from "../views/home/Products.vue";
 
 Vue.use(VueRouter)
 
@@ -32,16 +32,16 @@ const routes = [
     component: Contact,
     name: "contact"
   },
-  {
-    path: "/login",
-    component: Login,
-    name: "login"
-  },
   // {
-  //   path: "/products",
-  //   component: Products,
-  //   name: "products"
+  //   path: "/login",
+  //   component: Login,
+  //   name: "login"
   // },
+  {
+    path: "/products",
+    component: Products,
+    name: "products"
+  },
 
 
   {
@@ -61,6 +61,7 @@ const routes = [
     path: '/login',
     component: () => import('../views/account/Login.vue')
   },
+
   {
     path: '/signup',
     component: () => import('../views/account/Signup.vue')

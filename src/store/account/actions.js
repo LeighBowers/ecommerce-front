@@ -12,8 +12,7 @@ export async function login(payload) {
         })
     }).then(data => data.json()).then((user) => {
         console.log(user)
-        // commit("setUserData", user)
-        // window.location = '/'
+
     });
 
     // console.log(email)

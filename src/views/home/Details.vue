@@ -37,6 +37,7 @@ export default {
     ...mapActions("product", ["productDetails"]),
   },
   mounted() {
+    console.log(this.user);
     this.productDetails(this.$route.params.idProduct);
   },
 };

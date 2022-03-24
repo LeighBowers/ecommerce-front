@@ -28,20 +28,6 @@
         />
       </div>
 
-      <!-- <div class="brief">
-        <label for="brief">Brief</label>
-        <textarea id="brief" v-model="brief"></textarea>
-      </div>
-      <div class="phone">
-        <label for="phone">Phone</label>
-        <input
-          type="number"
-          placeholder="Type Your Phone Number"
-          id="phone"
-          required
-          v-model="phone"
-        />
-      </div> -->
       <button type="submit" class="btn btn-primary btn-block">Login</button>
       <br />
 
@@ -57,10 +43,9 @@
 </template>
 
 <script>
-// import { mapActions } from "vuex";
+// ================================================
+
 export default {
-  // name: "Base",
-  //
   name: "Signin",
   data() {
     return {
@@ -71,7 +56,6 @@ export default {
   },
 
   methods: {
-    // ...mapActions("account", ["login"]),
     Signin() {
       if (this.email && this.password) {
         console.log("we made it");
@@ -90,10 +74,13 @@ export default {
           .then((user) => {
             console.log(user);
             if (user.accessToken) {
-              // localStorage.setItem("id", user._id);
-              // localStorage.setItem("name", user.name);
-              // localStorage.setItem("email", user.email);
+              localStorage.setItem("id", user._id);
+              localStorage.setItem("name", user.name);
+              localStorage.setItem("email", user.email);
+              localStorage.setItem("access_token", user.accessToken);
+
               return this.$router.push("/products");
+              // router.$router.push({ path: "/" });
             }
             alert(user.message);
           });
@@ -108,7 +95,6 @@ export default {
     },
   },
 };
-// import { mapActions } from "vuex";
 </script>
 
 <style>

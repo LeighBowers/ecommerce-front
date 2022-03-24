@@ -3,9 +3,13 @@
     <div>
       <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <router-link class="navbar-brand" to="/">Glaz Perfume</router-link>
+        <router-link class="btn btn-primary my-2 my-sm-0" to="/about"
+          >About</router-link
+        >
+
         <div class="ml-auto">
           <div v-if="user.photoURL">
-            <img :src="user.photoURL" class="img-thumbnail profile-image" alt />
+            <!-- <img :src="user.photoURL" class="img-thumbnail profile-image" alt /> -->
             <router-link class="btn btn-primary my-2 my-sm-0" to="/cart">
               <img
                 src="https://pngimg.com/uploads/shopping_cart/shopping_cart_PNG38.png"
@@ -17,16 +21,19 @@
               }}</span>
             </router-link>
           </div>
-          <router-link v-else class="btn btn-primary my-2 my-sm-0" to="/login"
-            >Login</router-link
-          >
+
           <span v-if="isLoggedIn === true">
             | <a @click="logout">Logout</a></span
+          >
+
+          <router-link v-else class="btn btn-primary my-2 my-sm-0" to="/login"
+            >Login</router-link
           >
 
           <router-link class="btn btn-primary my-2 my-sm-0" to="/signup"
             >Signup</router-link
           >
+
           <router-link class="btn btn-primary my-2 my-sm-0" to="/contact"
             >Contact</router-link
           >
@@ -57,13 +64,13 @@ export default {
 
 <style>
 nav {
-  background-color: teal;
+  background-color: rgb(214, 218, 218);
 }
 .navbar-brand {
   font-weight: bold;
   font-size: 25px;
   /* font-family: Comic; */
-  color: #ffffff !important;
+  color: #1a0d0d !important;
 }
 .profile-image {
   width: 50px;
@@ -75,16 +82,16 @@ nav {
 .btn {
   border-radius: 0%;
   font-weight: bold;
-  background: teal;
-  border: teal;
+  background: rgb(143, 146, 146);
+  border: rgb(104, 110, 110);
 }
 .btn:hover {
-  background: #00b4b4;
+  background: #d9dfdf;
 }
 input {
   border-radius: 0%;
 }
 .btn:focus {
-  background: teal;
+  background: rgb(120, 128, 128);
 }
 </style>

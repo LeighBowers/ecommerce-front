@@ -38,8 +38,8 @@ body {
 }
 
 .about-section {
-  background: url(https://fadzrinmadu.github.io/hosted-assets/responsive-about-us-section-using-html/pic.jpg)
-    no-repeat left;
+  background: url(https://i.postimg.cc/SQdnxMc8/black-perfumes.jpg) no-repeat
+    left;
   background-size: 55%;
   background-color: #fdfdfd;
   overflow: hidden;

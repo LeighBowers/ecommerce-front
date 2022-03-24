@@ -6,8 +6,8 @@
       <div class="row">
         <router-link
           type="button"
-          class="btn btn-primary btn-lg"
-          :to="'/details/' + product.id"
+          class="btn btn-secondary btn-lg"
+          :to="'/details/' + product._id"
           >Details</router-link
         >
       </div>
@@ -24,6 +24,7 @@ export default {
 
 <style>
 .card .product-image {
-  height: 300px;
+  height: 80px;
+  width: 80px;
 }
 </style>

@@ -13,7 +13,7 @@
             align-items-center
           "
         >
-          <img :src="item.imageUrl" alt height="60" width="60" />
+          <img :src="item.imageUrl" alt height="50" width="50" />
           <p class="h4">{{ item.name }}</p>
           <div class="row">
             <div class="mr-2">
