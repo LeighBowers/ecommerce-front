@@ -12,7 +12,7 @@
           v-model="name"
         />
       </div>
-      <div class="pass">
+      <div class="password">
         <label for="pass">Password</label>
         <input
           type="password"

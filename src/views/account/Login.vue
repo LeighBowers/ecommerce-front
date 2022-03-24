@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="login({ email, password })">
+  <form @submit.prevent="Signin({ email, password })">
     <!-- <form @submit.prevent="signup"> -->
     <div class="main">
       <div class="user">
@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+// import { mapActions } from "vuex";
 export default {
   // name: "Base",
   //
@@ -71,11 +71,11 @@ export default {
   },
 
   methods: {
-    ...mapActions("account", ["login"]),
+    // ...mapActions("account", ["login"]),
     Signin() {
       if (this.email && this.password) {
         console.log("we made it");
-        fetch("https://ecommerce-pr.herokuapp.com/users/signin", {
+        fetch("https://ecommerce-pr.herokuapp.com/users/login", {
           method: "POST",
           body: JSON.stringify({
             email: this.email,
@@ -90,13 +90,11 @@ export default {
           .then((user) => {
             console.log(user);
             if (user.accessToken) {
-              localStorage.setItem("id", user._id);
-              localStorage.setItem("name", user.name);
-              localStorage.setItem("email", user.email);
-
-              // return this.$router.push("/products");
+              // localStorage.setItem("id", user._id);
+              // localStorage.setItem("name", user.name);
+              // localStorage.setItem("email", user.email);
+              return this.$router.push("/products");
             }
-
             alert(user.message);
           });
       }

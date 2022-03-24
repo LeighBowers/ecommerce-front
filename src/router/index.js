@@ -6,7 +6,6 @@ import About from "../views/home/About.vue";
 import Contact from "../views/home/Contact.vue";
 // import Profile from "../views/home/Profile.vue";
 // import Products from "../views/home/Products.vue";
-// import { Products } from 'view/home/Products.vue';
 
 Vue.use(VueRouter)
 

@@ -3,6 +3,7 @@ import axios from "axios"
 export function getProducts({ commit }) {
     let url = "https://ecommerce-pr.herokuapp.com/products";
     axios.get(url).then((response) => {
+        console.log(response.data)
         commit("setProducts", response.data);
     }).catch(error => {
         console.log(error);
