@@ -23,6 +23,13 @@
             required
             v-model="password"
           />
+           <input
+                v-model="confirmPassword"
+                type="password"
+                class="form-control"
+                placeholder="Confrim Password"
+                required
+              />
         </div>
         <div class="email">
           <label for="email">E-mail</label>
@@ -34,8 +41,8 @@
             v-model="email"
           />
         </div>
-
-        <button type="submit" class="btn btn-primary btn-block">Signup</button>
+ <input type="submit" class="btn btn-primary" />
+        <!-- <button type="submit" class="btn btn-primary btn-block">Signup</button> -->
         <br />
       </div>
       <p>
