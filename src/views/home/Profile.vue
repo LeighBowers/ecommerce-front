@@ -69,9 +69,9 @@ export default {
 </script>
 
 <style scope>
-p {
+/* p {
   line-height: 1rem;
-}
+} */
 
 .card {
   padding: 20px;
