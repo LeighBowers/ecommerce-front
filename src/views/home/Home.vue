@@ -1,35 +1,66 @@
   <template>
-  <div class="container">
-    <section id="perfume-collection">
+  <div>
+    <div id="perfume-collection">
       <div class="container">
         <div class="sc-content">
-          <h1>Glaze Perfume</h1>
-          <button type="button" class="btn btn-secondary">
-            <a href="#">More</a>
-          </button>
+          <h1>The Perfect Perfume Shop</h1>
           <p class="description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus error
-            ipsam reprehenderit odit repellat ipsum, necessitatibus quam ab
-            voluptas, adipisci dolores dolore quis facere sunt, magni placeat
-            numquam voluptatibus at?
+            We Believe Perfume is a mask of identity and the finail touch of
+            style.
           </p>
-
-          <img
-            src="https://i.postimg.cc/3xW2bthJ/the-perfume-shop-logo-vector.png"
-            alt="sc-image"
-          />
+          <!-- <a href="#">discover now</a> -->
+        </div>
+        <div class="sc-media">
+          <div class="sc-media-bg">
+            <img
+              src="https://i.postimg.cc/JzJCC65T/best-perfumes-for-women-budget-m-2.jpg"
+              alt="sc-image"
+              style="width: 100%"
+            />
+          </div>
         </div>
       </div>
-    </section>
+      <Product />
+    </div>
+    <div></div>
   </div>
 </template>
 <script>
+import { mapActions } from "vuex";
+import Product from "./Products.vue";
+export default {
+  components: {
+    Product,
+  },
+  methods: {
+    ...mapActions("product", ["getProducts"]),
+  },
+  created() {
+    this.getProducts();
+  },
+};
 </script>
 <style scoped>
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Open Sans", sans-serif;
-  box-sizing: border-box;
+#perfume-collection {
+  margin-top: 25px;
+}
+.container {
+  margin: 0 auto;
+  background-color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+#perfume-collection .container .sc-content {
+  width: 60%;
+  padding-top: 3.4rem;
+  padding-right: 3rem;
+  padding-bottom: 2rem;
+}
+
+.sc-media {
+  z-index: 5;
+  width: 45%;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 }
 </style>

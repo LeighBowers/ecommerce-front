@@ -8,7 +8,7 @@ import product from './product'
 Vue.use(Vuex)
 
 const vuexLocalStorage = new VuexPersist({
-  key: "e-commerce",
+  key: "e-comKeys",
   storage: window.localStorage,
 })
 export default function () {
@@ -17,11 +17,10 @@ export default function () {
       account,
       product
     },
+    strict: process.env.MONGO_URL,
     plugins: [vuexLocalStorage.plugin],
 
-    // enable strict mode (adds overhead!)
-    // for dev mode only
-    strict: process.env.MONGO_URL
+
   })
 
   return Store

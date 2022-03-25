@@ -5,53 +5,9 @@
       <div class="contact-title"><h1>Contact Us</h1></div>
       <div class="container">
         <div class="row">
-          <div class="col-md-4">
-            <div class="contact-info">
-              <div class="contact-info-item">
-                <div class="contact-info-icon">
-                  <i class="fas fa-map-marked"></i>
-                </div>
-                <div class="contact-info-text">
-                  <h2>address</h2>
-                  <span>Cape Towns </span>
-                  <span>South Africa</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="contact-info">
-              <div class="contact-info-item">
-                <div class="contact-info-icon">
-                  <i class="fas fa-envelope"></i>
-                </div>
-                <div class="contact-info-text">
-                  <h2>E-mail</h2>
-                  <span>info@LoremIpsum.com</span>
-                  <span>yourmail@gmail.com</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="contact-info">
-              <div class="contact-info-item">
-                <div class="contact-info-icon">
-                  <i class="fas fa-clock"></i>
-                </div>
-                <div class="contact-info-text">
-                  <h2>Contact Details</h2>
-                  <span>Cell: 0658820592</span>
-                  <span>Alternitive: 0769093578</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
           <div class="col">
             <div class="contact-page-form">
-              <h2>Get in Touch</h2>
+              <!-- <h2>Get in Touch</h2> -->
               <form @submit.prevent="handleSubmit" method="post">
                 <div class="row">
                   <div class="col-md-6 col-sm-6 col-xs-12">
@@ -95,10 +51,54 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="contact-info">
+              <div class="contact-info-item">
+                <div class="contact-info-icon">
+                  <i class="fas fa-map-marked"></i>
+                </div>
+                <div class="contact-info-text">
+                  <h2>address</h2>
+                  <span>Cape Towns </span>
+                  <span>South Africa</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="contact-info">
+              <div class="contact-info-item">
+                <div class="contact-info-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-info-text">
+                  <h2>E-mail</h2>
+                  <span>glaz@gmail.com</span>
+                  <span>leighsylvester@gmail.com</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="contact-info">
+              <div class="contact-info-item">
+                <div class="contact-info-icon">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div class="contact-info-text">
+                  <h2>Contact Details</h2>
+                  <span>Cell: 0658820592</span>
+                  <span>Alternitive: 0769093578</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <div class="copy"><p class="copyright">Company Name © 2022</p></div>
+    <div class="copy"><p class="copyright">Glaxy Glaze © 2022</p></div>
   </section>
 </template>
             
@@ -124,6 +124,7 @@ export default {
           email: this.email,
           phone: this.phone,
           subject: this.subject,
+          message: this.message,
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -147,7 +148,7 @@ export default {
 }
 .contact-title {
   position: relative;
-  color: #12777eec;
+  color: #313535ec;
   font-size: 18px;
   font-weight: 700;
   padding-right: 50px;
@@ -162,7 +163,7 @@ export default {
   bottom: 7px;
   width: 40px;
   height: 1px;
-  background-color: #12777eec;
+  background-color: #96312eec;
 }
 section {
   padding: 60px 0;
@@ -182,7 +183,7 @@ section {
   padding: 30px 0px;
 }
 .contact-page-sec .contact-page-form h2 {
-  color: #12777eec;
+  color: #242727ec;
   text-transform: capitalize;
   font-size: 22px;
   font-weight: 700;
@@ -198,10 +199,6 @@ section {
   height: 110px;
 }
 
-.contact-info-icon i {
-  font-size: 48px;
-  color: #12777eec;
-}
 .contact-info-text p {
   margin-bottom: 0px;
 }
@@ -243,8 +240,8 @@ section {
   border-radius: 4px;
 }
 .single-input-fieldsbtn input[type="submit"] {
-  background: #12777eec none repeat scroll 0 0;
-  color: #fff;
+  background: #805c5cf6 none repeat scroll 0 0;
+  color: rgb(22, 21, 21);
   display: inline-block;
   font-weight: 600;
   padding: 10px 0;

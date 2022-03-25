@@ -1,111 +1,140 @@
 <template>
   <!-- <form @submit.prevent="login({ email, password })"> -->
-  <form @submit.prevent="signup">
-    <div class="main">
-      <div class="user">
-        <label for="name">Username</label>
-        <input
-          type="text"
-          placeholder="Type Your Name In English Only"
-          id="name"
-          required
-          v-model="name"
-        />
-      </div>
-      <div class="password">
-        <label for="pass">Password</label>
-        <input
-          type="password"
-          placeholder="Type A Complex Password"
-          id="pass"
-          required
-          v-model="password"
-        />
-      </div>
-      <div class="email">
-        <label for="email">E-mail</label>
-        <input
-          type="email"
-          placeholder="Type A Valid Email"
-          id="email"
-          required
-          v-model="email"
-        />
-      </div>
-      <!-- <div class="brief">
-        <label for="brief">Brief</label>
-        <textarea id="brief" v-model="brief"></textarea>
-      </div>
-      <div class="phone">
-        <label for="phone">Phone</label>
-        <input
-          type="number"
-          placeholder="Type Your Phone Number"
-          id="phone"
-          required
-          v-model="phone"
-        />
-      </div> -->
-      <button type="submit" class="btn btn-primary btn-block">Signup</button>
-      <br />
-      <!-- <button type="submit" class="btn btn-primary btn-block">Login</button> -->
+  <div class="card login" v-bind:class="{ error: emptyFields }">
+    <h1>Sign Up</h1>
+    <form @submit.prevent="doRegister()">
+      <div class="main">
+        <div class="user">
+          <label for="name">Username</label>
+          <input
+            type="text"
+            placeholder="Type Your Name In English Only"
+            id="name"
+            required
+            v-model="name"
+          />
+        </div>
+        <div class="password">
+          <label for="pass">Password</label>
+          <input
+            type="password"
+            placeholder="Type A Complex Password"
+            id="pass"
+            required
+            v-model="password"
+          />
+        </div>
+        <div class="email">
+          <label for="email">E-mail</label>
+          <input
+            type="email"
+            placeholder="Type A Valid Email"
+            id="email"
+            required
+            v-model="email"
+          />
+        </div>
 
-      <!-- <a class="btn" href="" target="/login"> Signup</a> -->
-    </div>
-    <button type="button" class="btn" target="/home" @click="goToHome">
-      Home
-    </button>
-    <button type="button" class="btn" target="/login" @click="logIn">
-      Login
-    </button>
-  </form>
+        <button type="submit" class="btn btn-primary btn-block">Signup</button>
+        <br />
+      </div>
+      <p>
+        Already have an account?
+        <router-link to="/login">
+          <a>Sign In</a>
+        </router-link>
+      </p>
+      <!-- <button type="button" class="btn" target="/home" @click="goToHome">
+        Home
+      </button>
+      <button type="button" class="btn" target="/login" @click="logIn">
+        Login
+      </button> -->
+    </form>
+  </div>
 </template>
 
 <script>
-// import { mapActions } from "vuex";
+import { mapActions } from "vuex";
+import axios from "axios";
+import API from "../../store/api/api";
 export default {
-  name: "Signup",
+  name: "Signin",
   data() {
     return {
       name: null,
       email: null,
       password: null,
+      confirmPassword: "",
+      emptyFields: false,
     };
   },
   methods: {
-    signup() {
-      if (this.name && this.email && this.password) {
-        console.log("we made it");
-        fetch("https://ecommerce-pr.herokuapp.com/users/signup", {
-          method: "POST",
-          body: JSON.stringify({
-            name: this.name,
-            email: this.email,
-            password: this.password,
-          }),
-          headers: {
-            "Content-type": "application/json; charset=UTF-8",
-          },
-        })
-          .then((data) => data.json())
-          .then((user) => {
-            console.log(user);
-            // localStorage.setItem("id", user._id);
-            // localStorage.setItem("name", user.name);
-            // localStorage.setItem("email", user.email);
-            this.$router.push({ name: "login" });
-          });
+    ...mapActions("account", ["signup"]),
+    checkPassword() {
+      if (this.password != this.confirmPassword) {
+        return false;
       }
     },
-    // ...mapActions("account", ["login"]),
-    goToHome() {
-      this.$router.push("/home");
-    },
-    logIn() {
-      this.$router.push("/login");
+
+    doRegister() {
+      if (
+        this.name === "" ||
+        this.email === "" ||
+        this.password === "" ||
+        this.confirmPassword === ""
+      ) {
+        this.emptyFields = true;
+      } else {
+        let passwordHandle = this.checkPassword();
+
+        if (passwordHandle === false) {
+          alert("Passwords does not match");
+        } else {
+          axios
+            .post(`${API.URL}/users/signup`, {
+              name: this.name,
+              email: this.email,
+              password: this.password,
+            })
+            .then(function (response) {
+              console.log(response);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        }
+      }
     },
   },
 };
+//   methods: {
+//     signup() {
+//       if (this.name && this.email && this.password) {
+//         console.log("we made it");
+//         fetch("https://ecommerce-pr.herokuapp.com/users/signup", {
+//           method: "POST",
+//           body: JSON.stringify({
+//             name: this.name,
+//             email: this.email,
+//             password: this.password,
+//           }),
+//           headers: {
+//             "Content-type": "application/json; charset=UTF-8",
+//           },
+//         })
+//           .then((data) => data.json())
+//           .then((user) => {
+//             console.log(user);
+//             localStorage.setItem("id", user._id);
+//             localStorage.setItem("name", user.name);
+//             localStorage.setItem("email", user.email);
+//             this.$router.push({ name: "login" });
+//           });
+//       }
+//     },
+//   },
+// };
 </script>
 
 <style scoped>
@@ -127,7 +156,7 @@ export default {
     "email brief"
     "btn btn";
   gap: 35px;
-  background-color: #609b65a6;
+  background-color: #ac8c8cb9;
 }
 @media (max-width: 767px) {
   .main {
@@ -156,7 +185,7 @@ export default {
 }
 .main div:not(.phone, .brief) label::after {
   content: " *";
-  color: #f00;
+  color: rgb(139, 78, 78);
 }
 .main div input {
   width: 100%;
@@ -183,7 +212,7 @@ export default {
   padding: 15px;
   text-decoration: none;
   text-align: center;
-  background-color: #009688;
+  background-color: #865454ee;
   color: #fff;
   font-size: 18px;
   cursor: pointer;

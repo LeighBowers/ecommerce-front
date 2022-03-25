@@ -1,28 +1,43 @@
 import axios from "axios"
+import API from '../api/api';
+const jwtToken = JSON.parse(localStorage.getItem("e-comKey"));
 
-export function getProducts({ commit }) {
-    let url = "https://ecommerce-pr.herokuapp.com/products";
-    axios.get(url).then((response) => {
-        console.log(response.data)
+export async function getProducts({ commit }) {
+    await axios.get(`${API.URL}/products`).then((response) => {
+        // axios.get(url).then((response) => {
+        //     console.log(response.data)
         commit("setProducts", response.data);
     }).catch(error => {
         console.log(error);
     });
 }
 
-export function productDetails({ commit }, id) {
-    let url = "https://ecommerce-pr.herokuapp.com/products";
-    axios.get(url, { params: { id: id } }).then((response) => {
-        commit("setProduct", response.data[0]);
-    }).catch(function (error) {
-        console.log(error);
-    });
+// export function productDetails({ commit }, id) {
+//     let url = "https://ecommerce-pr.herokuapp.com/products";
+//     axios.get(url, { params: { id: id } }).then((response) => {
+//         commit("setProduct", response.data[0]);
+//     }).catch(function (error) {
+//         console.log(error);
+//     });
+// }
+export async function productDetails(id) {
+    let response = await axios.get(`${API.URL}/products`, {
+        headers: {
+            'Content-Type': 'application/json',
+            'authorization': 'Bearer ' + jwtToken.account.userData.accessToken
+        },
+        params: { id: id }
+    }).then(function (data) { return data });
+    console.log(response)
 }
-
 export function addCart({ commit, getters }, payload) {
     let cart = getters.cart
-    let data = payload.product
-    data["quantity"] = payload.quantity
+    let product = getters.product
+    let qty = payload.quantity
+    let data = {
+        product,
+        qty
+    }
     cart.push(data)
     commit("setCart", cart)
 }

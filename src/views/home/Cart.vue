@@ -4,7 +4,7 @@
       <div class="list-group col-8">
         <a
           v-for="item in cart"
-          :key="item.id"
+          :key="item._id"
           href="#"
           class="
             list-group-item list-group-item-action
@@ -13,20 +13,20 @@
             align-items-center
           "
         >
-          <img :src="item.imageUrl" alt height="50" width="50" />
-          <p class="h4">{{ item.name }}</p>
+          <img :src="item.product.img" alt height="50" width="50" />
+          <p class="h4">{{ item.product.name }}</p>
           <div class="row">
             <div class="mr-2">
               <p>Unique Price</p>
-              <p>{{ item.price }}</p>
+              <p>{{ item.product.price }}</p>
             </div>
             <div class="mr-2">
               <p>Total Price</p>
-              <p>${{ item.price * item.quantity }}</p>
+              <p>R{{ item.product.price * item.qty }}</p>
             </div>
             <div>
               <p>Quantity</p>
-              <p>{{ item.quantity }}</p>
+              <p>{{ item.qty }}</p>
             </div>
           </div>
         </a>
@@ -41,7 +41,7 @@
           <p class="h4">Total</p>
           <div>
             <p>Total Price</p>
-            <p>${{ totalPrice }}</p>
+            <p>R{{ totalPrice }}</p>
           </div>
         </div>
         <button
@@ -73,7 +73,7 @@ export default {
     ...mapActions("product", ["removeCart"]),
     calcPrice() {
       this.cart.forEach((element) => {
-        this.totalPrice += element.price * element.quantity;
+        this.totalPrice += element.product.price * element.qty;
       });
     },
     checkout() {

@@ -1,99 +1,92 @@
 <template>
-  <form @submit.prevent="Signin({ email, password })">
-    <!-- <form @submit.prevent="signup"> -->
-    <div class="main">
-      <div class="user">
-        <label for="name">Name</label>
-        <input type="text" placeholder="" id="name" required v-model="name" />
-      </div>
-      <div class="pass">
-        <label for="pass">Password</label>
-        <input
-          type="password"
-          placeholder=""
-          id="pass"
-          required
-          v-model="password"
-        />
+  <div class="card login" v-bind:class="{ error: emptyFields }">
+    <h1>Sign In</h1>
+    <form @submit.prevent="login({ email, password })">
+      <!-- <form @submit.prevent="signup"> -->
+      <div class="main">
+        <!-- <div class="user">
+          <label for="name">Name</label>
+          <input type="text" placeholder="" id="name" required v-model="name" />
+        </div> -->
+        <div class="pass">
+          <label for="pass">Password</label>
+          <input
+            type="password"
+            placeholder=""
+            id="pass"
+            required
+            v-model="password"
+          />
+        </div>
+
+        <div class="email">
+          <label for="email">E-mail</label>
+          <input
+            type="email"
+            placeholder="Type A Valid Email"
+            id="email"
+            required
+            v-model="email"
+          />
+        </div>
+
+        <input type="submit" class="btn btn-primary btn-block" />
+        <br />
       </div>
 
-      <div class="email">
-        <label for="email">E-mail</label>
-        <input
-          type="email"
-          placeholder="Type A Valid Email"
-          id="email"
-          required
-          v-model="email"
-        />
-      </div>
-
-      <button type="submit" class="btn btn-primary btn-block">Login</button>
-      <br />
-
-      <!-- <button type="submit" class="btn btn-primary btn-block">Login</button> -->
-    </div>
-    <button type="button" class="btn" target="/home" @click="goToHome">
-      Home
-    </button>
-    <button type="button" class="btn" target="/signup" @click="signUp">
-      Signup
-    </button>
-  </form>
+      <p>
+        Don't have an account?
+        <router-link to="/signup">
+          <a>Sign up here</a>
+        </router-link>
+      </p>
+    </form>
+  </div>
 </template>
 
 <script>
 // ================================================
-
+import { mapActions } from "vuex";
 export default {
-  name: "Signin",
+  name: "signin",
   data() {
     return {
-      name: null,
+      // name: null,
       email: null,
       password: null,
+        emptyFields: false,
     };
   },
-
   methods: {
-    Signin() {
-      if (this.email && this.password) {
-        console.log("we made it");
-        fetch("https://ecommerce-pr.herokuapp.com/users/login", {
-          method: "POST",
-          body: JSON.stringify({
-            email: this.email,
-            password: this.password,
-          }),
-
-          headers: {
-            "Content-type": "application/json; charset=UTF-8",
-          },
-        })
-          .then((data) => data.json())
-          .then((user) => {
-            console.log(user);
-            if (user.accessToken) {
-              localStorage.setItem("id", user._id);
-              localStorage.setItem("name", user.name);
-              localStorage.setItem("email", user.email);
-              localStorage.setItem("access_token", user.accessToken);
-
-              return this.$router.push("/products");
-              // router.$router.push({ path: "/" });
-            }
-            alert(user.message);
-          });
-      }
-    },
-
-    goToHome() {
-      this.$router.push("/home");
-    },
-    signUp() {
-      this.$router.push("/signup");
-    },
+    ...mapActions("account", ["login"]),
   },
+
+  // methods: {
+  //   Signin() {
+  //     if (this.email && this.password) {
+  //       console.log("we made it");
+  //       fetch("https://ecommerce-pr.herokuapp.com/users/login", {
+  //         method: "POST",
+  //         body: JSON.stringify({
+  //           email: this.email,
+  //           password: this.password,
+  //         }),
+
+  //         headers: {
+  //           "Content-type": "application/json; charset=UTF-8",
+  //         },
+  //       })
+  //         .then((data) => data.json())
+  //         .then((user) => {
+  //           console.log(user);
+  //           if (user.accessToken) {
+  //             localStorage.setItem("id", user._id);
+  //             localStorage.setItem("name", user.name);
+  //             localStorage.setItem("email", user.email);
+  //             localStorage.setItem("access_token", user.accessToken);
+
+  //             return this.$router.push("/products");
+  //           }
 };
 </script>
 
@@ -116,7 +109,7 @@ export default {
     "email brief"
     "btn btn";
   gap: 35px;
-  background-color: #609b65a6;
+  background-color: #ac8c8cb9;
 }
 @media (max-width: 767px) {
   .main {
@@ -139,7 +132,7 @@ export default {
 }
 .main div:not(.phone, .brief) label::after {
   content: " *";
-  color: #f00;
+  color: rgb(110, 44, 44);
 }
 .main div input {
   width: 100%;
@@ -166,8 +159,8 @@ export default {
   padding: 15px;
   text-decoration: none;
   text-align: center;
-  background-color: #009688;
-  color: #fff;
+  background-color: #8d4848cb;
+  color: rgb(107, 42, 42);
   font-size: 18px;
   cursor: pointer;
   transition: 0.3s ease-in-out;

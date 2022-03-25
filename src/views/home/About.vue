@@ -3,16 +3,17 @@
     <div class="inner-container">
       <h1>About Us</h1>
       <p class="text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus velit
-        ducimus, enim inventore earum, eligendi nostrum pariatur necessitatibus
-        eius dicta a voluptates sit deleniti autem error eos totam nisi neque
-        voluptates sit deleniti autem error eos totam nisi neque.
+        We do research perfume bottle, tester bottle and sample vial wholesalers
+        and the designs they offer for each type of customer. Choose a bottle
+        shape and size to represent each of the fragrances, and contact us. Ask
+        how many bottles/units are required for a minimum purchase and how much
+        that minimum purchase costs.
       </p>
-      <div class="skills">
+      <!-- <div class="skills">
         <span>Web Design</span>
         <span>Photoshop & Illustrator</span>
         <span>Coding</span>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -22,35 +23,20 @@ export default {};
 </script>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Open Sans", sans-serif;
-  box-sizing: border-box;
-}
-
-body {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f1f1f1;
-}
-
 .about-section {
   background: url(https://i.postimg.cc/SQdnxMc8/black-perfumes.jpg) no-repeat
     left;
-  background-size: 55%;
+  background-size: 100%;
   background-color: #fdfdfd;
   overflow: hidden;
-  padding: 100px 0;
+  /* padding: 48px 48px; */
 }
 
 .inner-container {
   width: 55%;
   float: right;
-  background-color: #fdfdfd;
-  padding: 150px;
+  background-color: #ac8c8cb9;
+  padding: 200px;
 }
 
 .inner-container h1 {
@@ -61,7 +47,7 @@ body {
 
 .text {
   font-size: 13px;
-  color: #545454;
+  color: #221d1d;
   line-height: 30px;
   text-align: justify;
   margin-bottom: 40px;
