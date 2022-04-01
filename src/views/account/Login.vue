@@ -48,13 +48,13 @@
 // ================================================
 import { mapActions } from "vuex";
 export default {
-  name: "signin",
+  name: "login",
   data() {
     return {
       // name: null,
       email: null,
       password: null,
-        emptyFields: false,
+      emptyFields: false,
     };
   },
   methods: {
