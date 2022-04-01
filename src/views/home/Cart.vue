@@ -13,7 +13,7 @@
             align-items-center
           "
         >
-          <img :src="item.product.img" alt height="50" width="50" />
+          <img :src="item.product.img" alt height="60" width="60" />
           <p class="h4">{{ item.product.name }}</p>
           <div class="row">
             <div class="mr-2">
@@ -47,7 +47,7 @@
         <button
           @click="checkout()"
           type="button"
-          class="btn btn-primary btn-lg btn-block mt-4"
+          class="btn btn-dark btn-lg btn-block mt-4"
         >
           Checkout
         </button>

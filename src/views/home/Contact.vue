@@ -98,7 +98,7 @@
       </div>
     </section>
 
-    <div class="copy"><p class="copyright">Glaxy Glaze © 2022</p></div>
+    <!-- <div class="copy"><p class="copyright">Glaxy Glaze © 2022</p></div> -->
   </section>
 </template>
             
@@ -138,7 +138,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #contact {
   margin-top: -100px;
 }

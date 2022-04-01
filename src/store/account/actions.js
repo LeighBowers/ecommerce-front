@@ -4,6 +4,7 @@ import router from '../../router/index';
 import Axios from 'axios';
 import API from '../api/api'
 
+
 export async function login(context, payload) {
     let response = await Axios.post(`${API.URL}/users/login`, {
         email: payload.email,

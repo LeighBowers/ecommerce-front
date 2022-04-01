@@ -46,7 +46,7 @@ export default {
 }
 .container {
   margin: 0 auto;
-  background-color: #ffffff;
+  background-color: #571a4496;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

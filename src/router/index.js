@@ -48,7 +48,7 @@ const routes = [
       { path: '/cart', component: () => import('../views/home/Cart.vue') }
     ]
   },
-  
+
 ]
 
 const router = new VueRouter({
@@ -58,9 +58,10 @@ const router = new VueRouter({
 })
 router.beforeEach((to, from, next) => {
   // let loggedIn = JSON.parse(localStorage.getItem('e-comKey'))
+  const loggedIn = localStorage.getItem("e-comKeys");
   const publicPages = ['/login', '/signup', '/about', '/contact'];
   const authRequired = !publicPages.includes(to.path);
-  const loggedIn = localStorage.getItem("e-comKeys");
+
   if (authRequired && !loggedIn) {
     return next('/login');
   }

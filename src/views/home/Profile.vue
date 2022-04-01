@@ -72,7 +72,9 @@ export default {
 /* p {
   line-height: 1rem;
 } */
-
+.container {
+  padding-bottom: 10%;
+}
 .card {
   padding: 20px;
 }
@@ -80,18 +82,22 @@ export default {
 .form-group {
   margin-bottom: 20px;
 }
+.form {
+  padding-top: -40%;
+}
 
-.login-page {
+/* .login-page {
   align-items: center;
   display: flex;
   height: 100vh;
+  background-color: #571a4496;
   background: url(https://images.pexels.com/photos/32237/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)
     no-repeat center center;
   background-size: cover;
   height: 100%;
   position: absolute;
   width: 100%;
-}
+} */
 
 .fade-enter-active,
 .fade-leave-active {
@@ -103,16 +109,17 @@ export default {
 }
 
 .wallpaper-register {
-  background: url(https://images.pexels.com/photos/533671/pexels-photo-533671.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)
-    no-repeat center center;
+  /* background: url(https://images.pexels.com/photos/533671/pexels-photo-533671.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)
+    no-repeat center center; */
+  /* background-color: #52083af5; */
   background-size: cover;
   height: 100%;
   position: absolute;
   width: 100%;
-  z-index: -1;
+  /* z-index: -1; */
 }
 
-h1 {
+.h1 {
   margin-bottom: 1.5rem;
 }
 

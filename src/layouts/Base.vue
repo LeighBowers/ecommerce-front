@@ -5,12 +5,8 @@
         <router-link class="navbar-brand" to="/">GLAZ PERFUME</router-link>
 
         <div>
-          <router-link class="btn btn-primary my-2 my-sm-0" to="/about"
-            >About</router-link
-          >
-          <router-link class="btn btn-primary my-2 my-sm-0" to="/contact"
-            >Contact</router-link
-          >
+          <router-link class="btn" to="/about">About</router-link>
+          <router-link class="btn" to="/contact">Contact</router-link>
         </div>
         <div class="ml-auto">
           <router-link
@@ -29,7 +25,7 @@
                   width="20"
                 />
                 <!-- <i class='bx bxs-cart'></i> -->
-                <span class="badge badge-danger badge-pill">{{
+                <span class="badge badge-secondary badge-pill">{{
                   cart.length
                 }}</span>
               </button>
@@ -71,7 +67,7 @@ export default {
 
 <style>
 nav {
-  background-color: rgb(161, 160, 161);
+  background-color: #571a4496;
 }
 .navbar-brand {
   font-weight: bold;
@@ -80,29 +76,29 @@ nav {
   color: #141313 !important;
   font-style: italic;
 }
-/* .profile-image {
+.profile-image {
   width: 50px;
   border-radius: 100% !important;
-} */
+}
 .page-container {
-  padding-top: 81px;
+  padding-top: 30px;
 }
 .btn {
   color: #0c0b0b !important;
   border-radius: 0%;
   font-weight: bold;
-  background: #9c8f8f;
-  border: rgb(120, 128, 128);
+  /* background: #9c8f8f;
+  border: rgb(120, 128, 128); */
 }
-.btn:hover {
+/* .btn:hover {
   background: #7a5b5b;
-}
+} */
 input {
   border-radius: 0%;
 }
-.btn:focus {
+/* .btn:focus {
   background: rgb(120, 128, 128);
-}
+} */
 
 input {
   border-radius: 0%;

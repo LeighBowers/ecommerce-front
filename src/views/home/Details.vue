@@ -28,7 +28,7 @@ export default {
     return {
       isInCardProp: false,
       storage: JSON.parse(localStorage.getItem("e-comKey")),
-      item_product: {}
+      item_product: {},
     };
   },
   // props: ["product"],
@@ -44,10 +44,10 @@ export default {
         return item._id == router.app._route.params.idProduct;
       })
       .pop();
-      if (item) {
-        this.$store.commit('product/setProduct', item)
-        this.item_product = item
-      }
+    if (item) {
+      this.$store.commit("product/setProduct", item);
+      this.item_product = item;
+    }
   },
 };
 </script>
@@ -56,5 +56,4 @@ export default {
 .container-fluid {
   padding: 30px;
 }
-
 </style>

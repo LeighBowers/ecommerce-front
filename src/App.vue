@@ -1,13 +1,16 @@
 <template>
   <div id="app">
     <Base />
+    <Footer />
   </div>
 </template>
   <script>
 import Base from "./layouts/Base.vue";
+import Footer from "./layouts/Footer.vue";
 export default {
   components: {
     Base,
+    Footer,
   },
   // computed: {
   //   isLoggedIn: function () {

@@ -17,8 +17,8 @@ import ProductCard from "../../components/products/ProductCard";
 export default {
   data() {
     return {
-      name: localStorage.getItem("name"),
-      email: localStorage.getItem("email"),
+      // name: localStorage.getItem("name"),
+      // email: localStorage.getItem("email"),
     };
   },
   computed: {

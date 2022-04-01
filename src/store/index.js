@@ -17,6 +17,8 @@ export default function () {
       account,
       product
     },
+
+    
     strict: process.env.MONGO_URL,
     plugins: [vuexLocalStorage.plugin],
 
